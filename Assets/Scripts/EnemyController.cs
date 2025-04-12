@@ -24,6 +24,7 @@ public class EnemyController : MonoBehaviour
 
     public void Move(Vector2 move)
     {
+        Debug.Log("Move");
         Vector3 pos = transform.position;
         pos.x += move.x;
         pos.y += move.y;
