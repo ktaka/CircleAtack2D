@@ -179,7 +179,7 @@ MonoBehaviour:
   m_text: 'Game Over
 
 
-    Press Space Key to Restart'
+    Press Enter Key to Restart'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_text: 'Game Clear
 
 
-    Press Space Key to Restart'
+    Press Enter Key to Restart'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -933,7 +933,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 6
 --- !u!4 &700434133
 Transform:
   m_ObjectHideFlags: 0
@@ -1025,7 +1025,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SCORE 2000
+  m_text: 'SCORE '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1484,7 +1484,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab:
   - {fileID: 8232467724657892860, guid: decb2ecc24b005f4f9c5854fc0671d96, type: 3}
-  - {fileID: 8232467724657892860, guid: bfad01c0022c0b04c98dab8c88c470bc, type: 3}
   - {fileID: 6356460725407938945, guid: 2912819e2c7b51c4694bbf28777b329b, type: 3}
   - {fileID: 6356460725407938945, guid: b289b91977d543740bff2c0f483aa7a0, type: 3}
   - {fileID: 8232467724657892860, guid: ca5ff9ec42a959b4db7693fa8a145a13, type: 3}

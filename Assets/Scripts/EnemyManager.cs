@@ -15,8 +15,8 @@ public class EnemyManager : MonoBehaviour
     float startPosX = 0.0f;
     float startPosY = 0.0f;
 
-    float fireInterval = 3.0f;
-    float moveInterval = 2.0f;
+    float fireInterval = 1.0f;
+    float moveInterval = 1.7f;
     Vector2 move;
     Vector2 moveForNextFrame;
     EnemyController[][] enemys;
@@ -76,9 +76,9 @@ public class EnemyManager : MonoBehaviour
         {
             speed = 1.0f;
         }
-        else if (GameManager.ActiveEnemyNum < 7)
+        else if (GameManager.ActiveEnemyNum < 10)
         {
-            speed = 2.0f;
+            speed = 1.5f;
         }
         return speed;
     }

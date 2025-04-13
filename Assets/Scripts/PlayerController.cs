@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,12 +13,12 @@ public class PlayerController : MonoBehaviour
     Transform firePoint;
 
     float horizontalLimit = 8.0f;
+    float blinkInterval = 0.1f;
     int remainNum = 2;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -55,6 +56,26 @@ public class PlayerController : MonoBehaviour
                 GameManager.IsGameOver = true;
                 Destroy(gameObject);
             }
+            StartCoroutine(Blink());
+        }
+    }
+
+    IEnumerator Blink()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(blinkInterval);
+            EnableChildrenRenderer(false );
+            yield return new WaitForSeconds(blinkInterval);
+            EnableChildrenRenderer(true);
+        }
+    }
+
+    void EnableChildrenRenderer(bool enable)
+    {
+        foreach (Renderer r in GetComponentsInChildren<SpriteRenderer>())
+        {
+            r.enabled = enable;
         }
     }
 }

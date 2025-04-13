@@ -44,7 +44,7 @@ public class EnemyController : MonoBehaviour
             return false;
         }
 
-        if (Mathf.Abs(pos.x) >= horizontalLimit)
+        if (!IsDead && Mathf.Abs(pos.x) >= horizontalLimit)
         {
             return true; // hit the limit
         }

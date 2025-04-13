@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
     {
         if (waitForRestart)
         {
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (Input.GetKeyUp(KeyCode.Return))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
