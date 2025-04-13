@@ -1487,6 +1487,15 @@ MonoBehaviour:
   - {fileID: 6356460725407938945, guid: 2912819e2c7b51c4694bbf28777b329b, type: 3}
   - {fileID: 6356460725407938945, guid: b289b91977d543740bff2c0f483aa7a0, type: 3}
   - {fileID: 8232467724657892860, guid: ca5ff9ec42a959b4db7693fa8a145a13, type: 3}
+  speedTable:
+  - num: 1
+    speed: 0.1
+  - num: 2
+    speed: 0.3
+  - num: 5
+    speed: 1
+  - num: 10
+    speed: 1.5
 --- !u!4 &1498135485
 Transform:
   m_ObjectHideFlags: 0

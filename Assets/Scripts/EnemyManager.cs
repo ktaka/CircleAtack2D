@@ -6,6 +6,15 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     GameObject[] enemyPrefab;
 
+    [System.Serializable]
+    struct SpeedTable {
+        [SerializeField] public int num;
+        [SerializeField] public float speed;
+    }
+
+    [SerializeField]
+    SpeedTable[] speedTable;
+
     int row = 11;
     int column;
 
@@ -64,22 +73,15 @@ public class EnemyManager : MonoBehaviour
     float GetSpeed()
     {
         float speed = moveInterval;
-        if (GameManager.ActiveEnemyNum == 1)
+        foreach (SpeedTable st in speedTable)
         {
-            speed = 0.1f;
+            if (GameManager.ActiveEnemyNum <= st.num)
+            {
+                speed = st.speed;
+                break;
+            }
         }
-        else if (GameManager.ActiveEnemyNum == 2)
-        {
-            speed = 0.3f;
-        }
-        else if (GameManager.ActiveEnemyNum < 5)
-        {
-            speed = 1.0f;
-        }
-        else if (GameManager.ActiveEnemyNum < 10)
-        {
-            speed = 1.5f;
-        }
+
         return speed;
     }
 
