@@ -3,17 +3,27 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField]
+    int score = 10;
+
+    [SerializeField]
     GameObject bullet;
 
     [SerializeField]
     Transform firePoint;
 
-    float horizontalLimit = 10.0f;
+    public bool IsDead {
+        get
+        {
+            return !gameObject.activeSelf;
+        }
+    }
+
+    float horizontalLimit = 7.5f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Fire();
+
     }
 
     // Update is called once per frame
@@ -22,19 +32,25 @@ public class EnemyController : MonoBehaviour
         
     }
 
-    public void Move(Vector2 move)
+    public bool Move(Vector2 move)
     {
-        Debug.Log("Move");
         Vector3 pos = transform.position;
         pos.x += move.x;
         pos.y += move.y;
+        transform.position = pos;
+
+        if (Mathf.Abs(move.y) > 0)
+        {
+            return false;
+        }
+
         if (Mathf.Abs(pos.x) >= horizontalLimit)
         {
-            // notice to manager
+            return true; // hit the limit
         }
         else
         {
-            transform.position = pos;
+            return false;
         }
     }
 
@@ -47,7 +63,11 @@ public class EnemyController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("PlayerBullet"))
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            Destroy(collision.gameObject);
+            GameManager.AddScore(score);
+            GameManager.ActiveEnemyNum--;
         }
     }
+
 }

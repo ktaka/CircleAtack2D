@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Transform firePoint;
 
-    float horizontalLimit = 10.0f;
+    float horizontalLimit = 8.0f;
+    int remainNum = 2;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            GameManager.IsGameOver = true;
             Destroy(gameObject);
         }
     }
@@ -46,7 +48,13 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("EnemyBullet"))
         {
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
+            remainNum--;
+            if (remainNum == 0)
+            {
+                GameManager.IsGameOver = true;
+                Destroy(gameObject);
+            }
         }
     }
 }
