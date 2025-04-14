@@ -28,7 +28,7 @@ public class EnemyManager : MonoBehaviour
     float moveInterval = 1.7f;
     Vector2 move;
     Vector2 moveForNextFrame;
-    EnemyController[][] enemys;
+    EnemyController[,] enemys;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,7 +39,7 @@ public class EnemyManager : MonoBehaviour
 
         startPosX = -rowDelta * ((row + 1) / 2.0f);
 
-        enemys = new EnemyController[column][];
+        enemys = new EnemyController[column, row];
 
         SpawnEnemys();
         StartCoroutine(MovingLoop());
@@ -53,12 +53,11 @@ public class EnemyManager : MonoBehaviour
         for (int i = 0; i < column; i++)
         {
             pos.x = startPosX;
-            enemys[i] = new EnemyController[row];
             for (int j = 0; j < row; j++)
             {
                 pos.x += rowDelta;
                 GameObject obj = Instantiate(enemyPrefab[i], pos, Quaternion.identity);
-                enemys[i][j] = obj.GetComponent<EnemyController>();
+                enemys[i, j] = obj.GetComponent<EnemyController>();
             }
             pos.y -= columnDelta;
         }
@@ -106,7 +105,7 @@ public class EnemyManager : MonoBehaviour
         {
             for (int j = 0; j < row; j++)
             {
-                bool didHitLimit = enemys[i][j].Move(move);
+                bool didHitLimit = enemys[i, j].Move(move);
                 if (didHitLimit)
                 {
                     needNewLine = true;
@@ -146,9 +145,9 @@ public class EnemyManager : MonoBehaviour
         int fireRow = Random.Range(0, row);
         for (int i = 0; i < column; i++)
         {
-            if (enemys[i][fireRow].IsDead == false)
+            if (enemys[i, fireRow].IsDead == false)
             {
-                fireEnemy = enemys[i][fireRow];
+                fireEnemy = enemys[i, fireRow];
                 break;
             }
         }
